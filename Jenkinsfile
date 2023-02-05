@@ -26,8 +26,8 @@ pipeline {
                 uploadJacocoResults: false   **/
 			
 			
-		    git url: 'https://github.com/sumanmanjhi28/calculator.git'
-			git branch: "${params.BRANCH}"
+		/**git url: 'https://github.com/sumanmanjhi28/calculator.git'    **/
+        git branch: "${params.BRANCH}", url: 'https://github.com/sumanmanjhi28/calculator.git' 
     withMaven {
       sh "mvn clean "
 				}
