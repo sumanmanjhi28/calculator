@@ -32,7 +32,7 @@ pipeline {
       sh "mvn clean "            **/
 	  
 	  sh 'mvn -B -DskipTests clean package'
-				}
+		
 			} 
         }
         stage('Test') {
