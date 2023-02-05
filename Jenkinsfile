@@ -22,12 +22,12 @@ pipeline {
                 runJacocoCoverage: false,
                 uploadJacocoResults: false   **/
 			}
-		}	
+			
 		    git url: 'https://github.com/sumanmanjhi28/calculator.git'
     withMaven {
       sh "mvn clean "
 				}
-        
+        }
         stage('Test') {
             steps {
                 echo 'Testing..'
