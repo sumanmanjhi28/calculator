@@ -24,10 +24,11 @@ pipeline {
 			
 			
 		    git url: 'https://github.com/sumanmanjhi28/calculator.git'
+			branch: 'main'
     withMaven {
       sh "mvn clean "
 				}
-			}
+			} 
         }
         stage('Test') {
             steps {
