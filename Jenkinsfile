@@ -28,8 +28,10 @@ pipeline {
 			
 		/**git url: 'https://github.com/sumanmanjhi28/calculator.git'    **/
         git branch: "${params.BRANCH}", url: 'https://github.com/sumanmanjhi28/calculator.git' 
-    withMaven {
-      sh "mvn clean "
+/** withMaven {
+      sh "mvn clean "            **/
+	  
+	  sh 'mvn -B -DskipTests clean package'
 				}
 			} 
         }
