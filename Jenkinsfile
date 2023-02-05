@@ -11,6 +11,9 @@ String getRepoOwnerName() {
 
 pipeline {
     agent any
+	parameters {
+    gitParameter branchFilter: 'origin/(.*)', defaultValue: 'main', name: 'BRANCH', type: 'PT_BRANCH'
+    }
 
     stages {
         stage('Build') {
@@ -24,7 +27,7 @@ pipeline {
 			
 			
 		    git url: 'https://github.com/sumanmanjhi28/calculator.git'
-			branch: 'main'
+			git branch: "${params.BRANCH}"
     withMaven {
       sh "mvn clean "
 				}
