@@ -14,20 +14,20 @@ pipeline {
 
     stages {
         stage('Build') {
-            steps {
+          steps {
          /**  glMavenBuild javaVersion:"11.0", 
 			    mavenGoals: "-f pom.xml clean install"  **/
 				
 		/**glMavenBuild pomFile: 'pom.xml',
                 runJacocoCoverage: false,
                 uploadJacocoResults: false   **/
-				
-				
+			}
+		}	
 		    git url: 'https://github.com/sumanmanjhi28/calculator.git'
     withMaven {
       sh "mvn clean "
 				}
-        }
+        
         stage('Test') {
             steps {
                 echo 'Testing..'
@@ -39,5 +39,4 @@ pipeline {
             }
         }
     }
-}
 }
