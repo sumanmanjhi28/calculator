@@ -15,9 +15,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-			    git url: 'https://github.com/sumanmanjhi28/calculator.git'
-                withMaven {
-				sh "mvn clean"
+              glMavenBuild javaVersion:"11.0",
+			    mavenGoals: "-f pom.xml clean install"
 				}
         }
         stage('Test') {
