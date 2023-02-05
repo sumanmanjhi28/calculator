@@ -15,8 +15,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-              glMavenBuild javaVersion:"11.0",
-			    mavenGoals: "-f pom.xml clean install"
+         /**  glMavenBuild javaVersion:"11.0", 
+			    mavenGoals: "-f pom.xml clean install"  **/
+				
+			  glMavenBuild pomFile: 'pom.xml',
+                runJacocoCoverage: false,
+                uploadJacocoResults: false
 				}
         }
         stage('Test') {
