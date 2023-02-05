@@ -10,30 +10,24 @@ String getRepoOwnerName() {
 
 
 pipeline {
-
     agent any
-    tools {
-        maven 'null'
-    }
+
     stages {
-        stage('Compile stage') {
+        stage('Build') {
             steps {
-                bat "mvn clean compile" 
+              glMavenBuild javaVersion:"11.0",
+			    mavenGoals: "-f pom.xml clean install"
+				}
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
         }
     }
-
-         stage('testing stage') {
-             steps {
-                bat "mvn test"
-        }
-    }
-
-          stage('deployment stage') {
-              steps {
-                bat "mvn deploy"
-        }
-    }
-
-  }
-
 }
